@@ -1,7 +1,8 @@
+feature/css-main-page
 * {
   margin: 0;
   padding: 0;
-  font-family: "Ariel"
+  font-family: "Arial"
 }
 
 
@@ -169,4 +170,70 @@ h1 {
   position: relative;
   left: 14em;
   bottom: 1em;
+
+.win-page {
+  height: 100vh;
+  width: 100%;
+}
+
+h1 {
+  display: flex;
+  justify-content: space-around;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+.win-info {
+
+}
+
+.inside-background {
+  background-image: url("assets/beyonce-cropped.jpg");
+  background-size: cover;
+  opacity: 0.2;
+
+
+}
+.win-page-background {
+
+}
+
+.congrats-heading {
+  font-size: 90px;
+  font-weight: bold;
+  padding-top: 200px;
+
+}
+
+.total-matches {
+  text-align: center;
+  font-size: 50px;
+}
+
+.final-win-time {
+  text-align: center;
+  font-size: 50px;
+
+}
+
+.win-page-btn {
+  background-color: black;
+  border: none;
+  color: white;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 200;
+  margin: 40px 30px;
+  padding: 17px;
+  width: 250px;
+
+}
+
+.play-new-btns {
+  display: flex;
+  justify-content: center;
+
+  }
+
+ master
 }
