@@ -1,4 +1,12 @@
 var deck = new Deck();
+var card = new Card(1,1);
+var card = new Card(2,1);
+var card = new Card(3,2);
+var card = new Card(4,2);
+var card = new Card(1,2);
+var card = new Card(1,2);
+
+
 var gameSpace = document.querySelector('.game-space');
 
 
@@ -36,7 +44,12 @@ function createDeck() {
 
 }
 
-function showCards () {
+function showCards (event) {
+
+  for(var i = 0; i < 10; i++)
+  gameSpace.innerHTML+= `<div class="cards card-${[i]}" data-id="card-${[i]}">
+    <p>${[i]}</p>
+  </div>`
   //toggle
 
 }
