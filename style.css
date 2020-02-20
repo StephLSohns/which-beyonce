@@ -4,6 +4,9 @@
   font-family: "Arial"
 }
 
+.test {
+  border: 5px solid red;
+}
 
 .game {
   height: 100vh;
@@ -107,64 +110,68 @@ h1 {
 
 }
 
-.card-one {
+.cards > * {
+  pointer-events: none;
+}
+
+.card-0 {
   transform: rotate(-10deg);
   position: relative;
   left: 10em;
 
 }
 
-.card-two {
+.card-1 {
   transform: rotate(2deg);
   position: relative;
   bottom: 5em;
   right: 1em;
 }
 
-.card-three {
+.card-2 {
   position: relative;
   bottom: 2em;
 }
 
-.card-four {
+.card-3 {
   transform: rotate(-5deg);
   position: relative;
   bottom: 1em;
   left: 16em;
 }
 
-.card-five {
+.card-4 {
   transform: rotate(3deg);
   position: relative;
   bottom: 1em;
 }
 
-.card-six {
+.card-5 {
   transform: rotate(4deg);
   position: relative;
   left: 8em;
   bottom: 1em;
 }
 
-.card-seven {
+.card-6 {
   position: relative;
   bottom: 30em;
   left: 38em;
 }
 
-.card-eight {
+.card-7 {
   transform: rotate(10deg);
   position: relative;
   left: 18em;
 }
 
-.card-nine {
+.card-8 {
   transform: rotate(-5deg);
   position: relative;
   bottom: 1em;
 }
 
-.card-ten {
+.card-9 {
   transform: rotate(-7deg);
   position: relative;
   left: 14em;
@@ -233,4 +240,3 @@ h1 {
   justify-content: center;
 
   }
-}

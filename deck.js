@@ -1,5 +1,5 @@
 class Deck {
-  constructor(cardObject){
+  constructor(){
     this.cards = [];//array of all the cards 10*
     this.matchedCards = [];//array with each pair 5*
     this.selectedCards = [];//two user selected cards *2
@@ -13,6 +13,14 @@ class Deck {
   // }randomize placement of all cards (this.cards)
   // }
   checkSelectedCards() {
+    if (event.target.classList.contains('test')) {
+        this.selectedCards.push()
+
+    }
+
+    //push card into this.selectedCards
+
+    // console.log('check selected');
     //called after first card
     //checking for a match
     //match = the two cards disappear
@@ -28,10 +36,10 @@ class Deck {
 
   fillDeck() {
   for(var i = 0; i < 10; i++) {
-    var card = new Card();
+    var card = new Card([i],);
     this.cards.push(card);
   }
-  console.log(this.cards.length);
+  // console.log(this.cards.length);
   //push new cards to cards array
   }
 }
