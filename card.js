@@ -1,6 +1,7 @@
 class Card {
-  constructor() {
-    this.matchInfo = //hold the same value as the card that matches //not dynamic
+  constructor(cardId, matchInfo) {
+    this.cardId = cardId;
+    this.matchInfo = 
     this.matched = false;
   }
   match() {
