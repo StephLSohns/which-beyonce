@@ -9,6 +9,15 @@ class Deck {
     //randomize placement of all cards (this.cards)
   }
   checkSelectedCards() {
+    if (event.target.classList.contains('test')) {
+      console.log("card selected");
+    }
+    
+
+
+    //push card into this.selectedCards
+
+    // console.log('check selected');
     //called after first card
     //checking for a match
     //match = the two cards disappear
@@ -27,7 +36,7 @@ class Deck {
     var card = new Card();
     this.cards.push(card);
   }
-  console.log(this.cards.length);
+  // console.log(this.cards.length);
   //push new cards to cards array
   }
 }
