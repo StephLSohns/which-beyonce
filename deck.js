@@ -5,9 +5,6 @@ class Deck {
     this.selectedCards = [];//two user selected cards *2
 
   }
-  shuffle() {
-    //randomize placement of all cards (this.cards)
-  }
 
   checkSelectedCards() {
     var selectedCard = event.target;
@@ -22,7 +19,15 @@ class Deck {
   //   // }
   // }
   console.log(this.selectedCards);
-    }
+
+  shuffle() {
+    //for (var i = this.cards.length - 1; i > 0; i--) {
+    //var j = Math.floor(Math.random() * (i + 1));
+    // [this.cards[i].matchInfo, this.cards[j].matchInfo] =
+    // [this.cards[j].matchInfo, this.cards[i].matchInfo];
+  // }randomize placement of all cards (this.cards)
+   }
+   
 
 
     // console.log(this.selectedCards);
