@@ -11,11 +11,11 @@ class Deck {
     // [this.cards[i].matchInfo, this.cards[j].matchInfo] =
     // [this.cards[j].matchInfo, this.cards[i].matchInfo];
   // }randomize placement of all cards (this.cards)
-  // }
-  checkSelectedCards() {
-    if (event.target.classList.contains('test')) {
+   }
+    checkSelectedCards() {
+      if (event.target.classList.contains('test')){
         this.selectedCards.push()
-
+      }
     }
 
     //push card into this.selectedCards
@@ -26,7 +26,7 @@ class Deck {
     //match = the two cards disappear
     //no match = two cards flip back over after two seconds
 
-  }
+
   moveToMatched() {
     //when a user matches two like cards
     //those cards are pushed to the matched array

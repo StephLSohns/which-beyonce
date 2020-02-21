@@ -89,9 +89,15 @@ h1 {
 
 .game-space {
   display: flex;
+  flex-flow: row wrap;
   height: 100vh;
   background: grey;
 }
+
+/*.flip-vertical-fwd {
+	-webkit-animation: flip-vertical-fwd 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: flip-vertical-fwd 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+} */
 
 .cards {
   border: 2px solid black;
@@ -114,68 +120,46 @@ h1 {
   pointer-events: none;
 }
 
-.card-0 {
-  transform: rotate(-10deg);
-  position: relative;
-  left: 10em;
-
-}
-
 .card-1 {
-  transform: rotate(2deg);
-  position: relative;
-  bottom: 5em;
-  right: 1em;
+  transform: rotate(15deg);
 }
 
 .card-2 {
-  position: relative;
-  bottom: 2em;
+  transform: rotate(-15deg);
 }
 
 .card-3 {
-  transform: rotate(-5deg);
-  position: relative;
-  bottom: 1em;
-  left: 16em;
+  transform: rotate(20deg);
 }
 
 .card-4 {
-  transform: rotate(3deg);
-  position: relative;
-  bottom: 1em;
+  transform: rotate(-25deg);
 }
 
 .card-5 {
-  transform: rotate(4deg);
-  position: relative;
-  left: 8em;
-  bottom: 1em;
+  transform: rotate(-15deg);
 }
 
 .card-6 {
-  position: relative;
-  bottom: 30em;
-  left: 38em;
+  transform: rotate(-25deg);
 }
 
 .card-7 {
-  transform: rotate(10deg);
-  position: relative;
-  left: 18em;
+  transform: rotate(15deg);
 }
 
 .card-8 {
-  transform: rotate(-5deg);
-  position: relative;
-  bottom: 1em;
+  transform: rotate(50deg);
 }
 
 .card-9 {
-  transform: rotate(-7deg);
-  position: relative;
-  left: 14em;
-  bottom: 1em;
+  transform: rotate(-20deg);
+}
+
+.card-10 {
+  transform: rotate(45deg);
+}
+
 
 .win-page {
   height: 100vh;
