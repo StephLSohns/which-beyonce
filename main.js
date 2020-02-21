@@ -8,12 +8,11 @@ var card = new Card(1,2);
 
 
 var gameSpace = document.querySelector('.game-space');
-
+// var flipVerticalFwd = document.querySelector('.flip-vertical-fwd');
 
 gameSpace.addEventListener('click', function() {
   cardFlip(event);
 });
-
 
 
 
@@ -45,11 +44,9 @@ function createDeck() {
 }
 
 function showCards (event) {
-
-  for(var i = 0; i < 10; i++)
+  for(var i = 1; i < 11; i++)
   gameSpace.innerHTML+= `<div class="cards card-${[i]}" data-id="card-${[i]}">
     <p>${[i]}</p>
   </div>`
   //toggle
-
 }
