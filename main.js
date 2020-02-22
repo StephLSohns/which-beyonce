@@ -12,17 +12,17 @@ gameSpace.addEventListener('click', function() {
 
 
 function cardFlip(event) {
-  // var cardsArray = deck.cards;
-  // var selectedCard = event.target;
-  // for(var i = 0; i < cardsArray.length; i++) {
-  // if (selectedCard.classList.contains('cards')) {
-  //   selectedCard.classList.add(`bey${cardsArray[i].matchInfo}`);
-  // }
+  var cardsArray = deck.cards;
+  var selectedCard = event.target;
 
-  }
-  deck.checkSelectedCards();
+  if (selectedCard.classList.contains('cards')) {
+    selectedCard.classList.add(`bey${selectedCard.dataset.id}`)
+    // selectedCard.classList.add(`bey${cardsArray[i].matchInfo}`)
 }
 
+  deck.checkSelectedCards();
+
+}
 
   // console.log("this card");
 
@@ -41,7 +41,7 @@ function createDeck() {
 function showCards (event) {
   var cardsArray = deck.cards;
   for(var i = 0; i < cardsArray.length; i++) {
-  gameSpace.innerHTML+= `<div class="cards card-${cardsArray[i].cardId} bey${cardsArray[i].matchId}" data-id="card-${cardsArray[i].matchInfo}">
+  gameSpace.innerHTML+= `<div class="cards card-${cardsArray[i].cardId}" data-id="${cardsArray[i].matchInfo}">
     <p>${i + 1}</p>
   </div>`
 }

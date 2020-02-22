@@ -229,27 +229,37 @@ h1 {
 
   }
 
-  .bey1 {
+  .bey1  {
     background-image: url("assets/bey1.jpg");
     background-size: cover;
+
   }
 
   .bey2 {
     background-image: url("assets/bey2.jpg");
     background-size: cover;
+
   }
 
-  .bey3 {
+  .bey3  {
     background-image: url("assets/bey3.jpeg");
     background-size: cover;
+
   }
 
-  .bey4 {
+  .bey4  {
     background-image: url("assets/bey4.jpg");
     background-size: cover;
+
   }
 
-  .bey5 {
+  .bey5  {
     background-image: url("assets/bey5.jpg");
     background-size: cover;
+
+  }
+
+  .hidden {
+    display: none;
+
   }
