@@ -7,18 +7,16 @@ class Deck {
   }
 
   checkSelectedCards() {
-    var selectedCard = event.target;
-    if (this.selectedCards.length < 2) {
-      this.selectedCards.push(selectedCard);
-  } else if (this.selectedCards.length === 2){
-      this.selectedCards.shift();
+    //clear selected cards when no match//
+
+    //called after first card
+    //checking for a match
+    //match = the two cards disappear
+    //no match = two cards flip back over after two seconds
+    //clear selected cards when no match//
   }
-  // for (i = 0; i < this.selectedCards.length; i++) {
-  //   // if(this.selectedCards.length > 1) {
-  //   //
-  //   // }
-  // }
-  console.log(this.selectedCards);
+
+
 
   shuffle() {
     //for (var i = this.cards.length - 1; i > 0; i--) {
@@ -27,20 +25,9 @@ class Deck {
     // [this.cards[j].matchInfo, this.cards[i].matchInfo];
   // }randomize placement of all cards (this.cards)
    }
-   
-
-
-    // console.log(this.selectedCards);
 
 
 
-      // console.log(firstSelected, secondSelected);
-
-
-    // var selectedCard = event.target;
-    // for (var i = 0; i < this.selectedCards.length; i++) {
-    //
-    // }
     //clear selected cards when no match//
 
     //called after first card
@@ -60,13 +47,13 @@ class Deck {
     var zeroIndex = 0;
   for(var i = 1; i < 6; i++) {
     zeroIndex++;
-    var card = new Card(zeroIndex, [i]);
+    var card = new Card(zeroIndex, i);
     this.cards.push(card);
   }
     var fiveIndex = 5;
   for(var i = 1; i < 6; i++) {
     fiveIndex++;
-    var card = new Card(fiveIndex, [i]);
+    var card = new Card(fiveIndex, i);
     this.cards.push(card);
   }
   console.log(this.cards);
