@@ -1,7 +1,6 @@
 var deck = new Deck();
 
 
-
 var gameSpace = document.querySelector('.game-space');
 // var flipVerticalFwd = document.querySelector('.flip-vertical-fwd');
 
@@ -15,12 +14,20 @@ function cardFlip(event) {
   var cardsArray = deck.cards;
   var selectedCard = event.target;
 
-  if (selectedCard.classList.contains('cards')) {
-    selectedCard.classList.add(`bey${selectedCard.dataset.id}`)
-    // selectedCard.classList.add(`bey${cardsArray[i].matchInfo}`)
-}
+  if (selectedCard.classList.contains('cards') && deck.selectedCards.length < 2) {
+    selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`)
+    selectedCard.classList.add('selected');
+    // console.log(selectedCard);
+  } if (selectedCard.classList.contains('selected') && deck.selectedCards.length == 2) {
+    selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`);
+    // deck.pushSelectedCards();
+  }
 
-  deck.checkSelectedCards();
+    deck.pushSelectedCards();
+
+    if(deck.selectedCards.length == 2) {
+      deck.checkSelectedCards(event)
+    }
 
 }
 
@@ -41,7 +48,7 @@ function createDeck() {
 function showCards (event) {
   var cardsArray = deck.cards;
   for(var i = 0; i < cardsArray.length; i++) {
-  gameSpace.innerHTML+= `<div class="cards card-${cardsArray[i].cardId}" data-id="${cardsArray[i].matchInfo}">
+  gameSpace.innerHTML+= `<div class="cards card-${cardsArray[i].cardId}" data-id="${cardsArray[i].matchInfo}" data-index="${cardsArray[i].cardId}">
     <p>${i + 1}</p>
   </div>`
 }
