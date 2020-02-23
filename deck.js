@@ -29,8 +29,10 @@ pushSelectedCards() {
 }
   checkSelectedCards(event) {
     var objectId = null;
-    var misMatch = null;
-    var currentCard = event.target;
+    var firstCard = this.selectedCards[0].cardId;
+    var secondCard = this.selectedCards[1].cardId;
+    var firstIndex = this.selectedCards[0].matchInfo;
+    var secondIndex = this.selectedCards[1].matchInfo;
     //both cards disappear
     //adds a counter to sidebar
   if (this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
@@ -39,31 +41,47 @@ pushSelectedCards() {
     this.selectedCards[1].matched = true;
     objectId = this.selectedCards[0].matchInfo;
     this.selectedCards = [];
-    console.log(objectId);
+
+    var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
+    for(var i = 0; i < cardsToHide.length; i++) {
+      cardsToHide[i].classList.add('hidden');
+    }
+    } else {
+    this.noMatch(firstCard, secondCard, firstIndex, secondIndex);
   }
-  var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
-  for(var i = 0; i < cardsToHide.length; i++) {
-    cardsToHide[i].classList.add('hidden');
-  }
+}
+
+  noMatch(firstCard, secondCard, firstIndex, secondIndex) {
+    var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);//1-10
+    var secondSelectedCard = document.querySelector(`.cards[data-index="${secondCard}"]`);//1-10
 
 
-  // var cardsToggle1 = document.querySelectorAll(`.cards[data-id="${selectedCard[0].cardId}"]`);
-  // var cardsToggle1 = document.querySelectorAll(`.cards[data-id="${selectedCard[0].cardId}"]`);
-  // var allCards = document.querySelectorAll('.cards');
-  //
-  // if (this.selectedCards[0].matchInfo != this.selectedCards[1].matchInfo) {
-  //     setTimeout(function() {
-  //       if (allCards.classList.contains('selected')) {
-  //
-  //       }
-  //   }, 2000);
-  // }
+    if (this.selectedCards[0].matchInfo != this.selectedCards[1].matchInfo) {
+      setTimeout(function() {
+      firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
+      secondSelectedCard.classList.toggle(`bey${secondIndex}`);//1-5
+    }, 1000);
+      }
+      this.selectedCards = [];
+      console.log(this.selectedCards);
+  }
+
+    //   setTimeout(function() {
+    //
+    //
+    //
+    //
+    //
+    //
+    // }, 2000);
+
+
   // if (misMatch && this.selectedCards.length == 2) {
   //   this.selectedCards.
   // }
 
 
-}
+
 
 delayTwoSeconds () {
   console.log("delay two seconds");

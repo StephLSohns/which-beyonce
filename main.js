@@ -27,7 +27,7 @@ function cardFlip(event) {
 
     if(deck.selectedCards.length == 2) {
       deck.checkSelectedCards(event)
-    }
+  }
 
 }
 
