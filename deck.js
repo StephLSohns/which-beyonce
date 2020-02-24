@@ -1,9 +1,8 @@
 class Deck {
   constructor(){
     this.cards = [];//array of all the cards 10*
-    this.matchedCards = [];//array with each pair 5*
-    this.selectedCards = [];//two user selected cards *2
-
+    this.matchedCards = [];//array with each matching pair 5*
+    this.selectedCards = [];//two user selected cards *2 (which = match or noMatch)
   }
 
 
@@ -46,10 +45,19 @@ pushSelectedCards() {
     for(var i = 0; i < cardsToHide.length; i++) {
       cardsToHide[i].classList.add('hidden');
     }
+    this.updateMatchCount();
     } else {
     this.noMatch(firstCard, secondCard, firstIndex, secondIndex);
   }
 }
+  updateMatchCount() {
+    var matchCount = this.getMatchCount();
+    var matchCounter = document.querySelector('.match-counter');
+    matchCounter.innerText = matchCount;
+  }
+  getMatchCount() {
+    return this.matchedCards.length;
+  }
 
   noMatch(firstCard, secondCard, firstIndex, secondIndex) {
     var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);//1-10
@@ -60,7 +68,7 @@ pushSelectedCards() {
       setTimeout(function() {
       firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
       secondSelectedCard.classList.toggle(`bey${secondIndex}`);//1-5
-    }, 1000);
+    }, 2000);
       }
       this.selectedCards = [];
       console.log(this.selectedCards);
@@ -127,6 +135,7 @@ delayTwoSeconds () {
     //when a user matches two like cards
     //those cards are pushed to the matched array
     //also one picture representing that match is moved to matched boxes
+    //and the match counter goes up by one for each match (upto 5 only)
 
 
 

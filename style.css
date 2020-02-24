@@ -17,7 +17,6 @@ h2 {
   color: white;
   display: flex;
   justify-content: space-around;
-
 }
 
 h1 {
@@ -31,7 +30,6 @@ h1 {
    height: 100vh;
    width: 20em;
    background: black;
-
  }
 
 .match-counter {
@@ -97,7 +95,12 @@ h1 {
 /*.flip-vertical-fwd {
 	-webkit-animation: flip-vertical-fwd 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 	        animation: flip-vertical-fwd 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-} */
+}
+.flip-vertical-bck {
+	-webkit-animation: flip-vertical-bck 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: flip-vertical-bck 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+*/
 
 .cards {
   border: 2px solid black;
@@ -113,7 +116,6 @@ h1 {
   margin-top: 23%;
   font-size: 7em;
   color: black;
-
 }
 
 .cards > * {
@@ -160,7 +162,6 @@ h1 {
   transform: rotate(45deg);
 }
 
-
 .win-page {
   height: 100vh;
   width: 100%;
@@ -181,9 +182,8 @@ h1 {
   background-image: url("assets/beyonce-cropped.jpg");
   background-size: cover;
   opacity: 0.2;
-
-
 }
+
 .win-page-background {
 
 }
@@ -192,7 +192,6 @@ h1 {
   font-size: 90px;
   font-weight: bold;
   padding-top: 200px;
-
 }
 
 .total-matches {
@@ -203,7 +202,6 @@ h1 {
 .final-win-time {
   text-align: center;
   font-size: 50px;
-
 }
 
 .win-page-btn {
@@ -216,54 +214,42 @@ h1 {
   margin: 40px 30px;
   padding: 17px;
   width: 250px;
-
 }
 
 .play-new-btns {
   display: flex;
   justify-content: center;
-
-  }
-
-  .selected {
-
-  }
-
-  .bey1  {
-    background-image: url("assets/bey1.jpg");
-    background-size: cover;
-
-  }
-
-  .bey2 {
-    background-image: url("assets/bey2.jpg");
-    background-size: cover;
-
-  }
-
-  .bey3  {
-    background-image: url("assets/bey3.jpeg");
-    background-size: cover;
-
-  }
-
-  .bey4  {
-    background-image: url("assets/bey4.jpg");
-    background-size: cover;
-
-  }
-
-  .bey5  {
-    background-image: url("assets/bey5.jpg");
-    background-size: cover;
-
-  }
-
-  .hidden {
-    display: none;
-
 }
 
 .selected {
-  
+
+}
+
+.bey1 {
+  background-image: url("assets/bey1.jpg");
+  background-size: cover;
+}
+
+.bey2 {
+  background-image: url("assets/bey2.jpg");
+  background-size: cover;
+}
+
+.bey3  {
+  background-image: url("assets/bey3.jpeg");
+  background-size: cover;
+}
+
+.bey4  {
+  background-image: url("assets/bey4.jpg");
+  background-size: cover;
+}
+
+.bey5  {
+  background-image: url("assets/bey5.jpg");
+  background-size: cover;
+}
+
+.hidden {
+  display: none;
 }
