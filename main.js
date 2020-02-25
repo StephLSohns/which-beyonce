@@ -21,18 +21,8 @@ function cardFlip(event) {
   } if (selectedCard.classList.contains('selected') && deck.selectedCards.length == 2) {
     selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`);
     // deck.pushSelectedCards();
+    }
   }
-
-    deck.pushSelectedCards();
-    var counter
-    if(deck.selectedCards.length == 2) {
-      counter++
-      var selectedBox = document.querySelector(`box-${counter}`)
-      var selectedCard = deck.checkSelectedCards(event)
-      selectedBox.classList.add(`bey${selectedCard}`)
-  }
-
-}
 
   // console.log("this card");
 
