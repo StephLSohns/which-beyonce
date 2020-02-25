@@ -28,6 +28,7 @@ function cardFlip(event) {
     }
     if (deck.selectedCards.length === 2) {
 
+
       checkSelectedCards();
       lockCards = true;
     }
@@ -94,7 +95,6 @@ function noMatch() {
 
 
 
-  // console.log("this card");
 
 
 

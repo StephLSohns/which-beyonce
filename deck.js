@@ -8,6 +8,7 @@ class Deck {
 
 
 
+
 pushSelectedCards(selectedCard) {
   this.selectedCards.push(selectedCard)
 
@@ -21,7 +22,51 @@ pushSelectedCards(selectedCard) {
     //     //   this.checkSelectedCards();
     //     }
     //
-    // }
+    }
+
+// pushSelectedCards() {
+//     var cards = this.cards;
+//     var selectedCard = event.target;
+//     var selectedCards = this.selectedCards;
+//     var selectedObject = null;
+
+//     for(var i = 0; i < this.cards.length; i++) {
+//       if (selectedCard.dataset.index == cards[i].cardId && selectedCards.length < 2) {
+//           this.selectedCards.push(cards[i]);
+//           // selectedObject = cards[i];
+//           // console.log(this.selectedCards);
+//           cards[i].selected = true;
+//         }else if (this.selectedCards.length == 2) {
+//         //   this.checkSelectedCards();
+//         }
+
+//     }
+// }
+//   checkSelectedCards(event) {
+//     var objectId = null;
+//     var firstCard = this.selectedCards[0].cardId;
+//     var secondCard = this.selectedCards[1].cardId;
+//     var firstIndex = this.selectedCards[0].matchInfo;
+//     var secondIndex = this.selectedCards[1].matchInfo;
+//     //both cards disappear
+//     //adds a counter to sidebar
+//   if (this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
+//     this.matchedCards.push(this.selectedCards);
+//     this.selectedCards[0].matched = true;
+//     this.selectedCards[1].matched = true;
+//     objectId = this.selectedCards[0].matchInfo;
+//     this.selectedCards = [];
+
+//     var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
+//     for(var i = 0; i < cardsToHide.length; i++) {
+//       cardsToHide[i].classList.add('hidden');
+//     }
+//     this.updateMatchCount();
+//     } else {
+//     this.noMatch(firstCard, secondCard, firstIndex, secondIndex);
+//   }
+//     return selectedCards[1].matchedInfo
+
 }
 //   checkSelectedCards() {
 //     var objectId = null;
