@@ -3,6 +3,7 @@ var deck = new Deck();
 
 var gameSpace = document.querySelector('.game-space');
 var lockCards = false;
+var mainPage = document.querySelector('.game');
 // var flipVerticalFwd = document.querySelector('.flip-vertical-fwd');
 gameSpace.addEventListener('click', cardFlip);
 
@@ -11,12 +12,10 @@ gameSpace.addEventListener('click', cardFlip);
 function cardFlip(event) {
 
   var selectedCard = event.target;
-  var canFlip = true;
-  if (lockCards) {
-  timer = setInterval(function() {
-      return
-    }, 2000)
-  }
+  // var canFlip = true;
+    // if (lockCards) {
+    // timer = window.setInterval(lockScreen, 2000);
+    // }
     if (deck.selectedCards.length < 2 && selectedCard.matches('.cards')) {
       selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`)
       selectedCard.classList.add('selected');
@@ -27,8 +26,6 @@ function cardFlip(event) {
       deck.pushSelectedCards(selectedCardInstance);
     }
     if (deck.selectedCards.length === 2) {
-
-
       checkSelectedCards();
       lockCards = true;
     }
@@ -46,6 +43,7 @@ function checkSelectedCards() {
         deck.moveToMatched(matchedCardsInstance);
       }
     updateMatchCount();
+    fillLeftBoxes(objectId);
   } else {
     noMatch();
   }
@@ -78,7 +76,40 @@ function noMatch() {
     deck.selectedCards = [];
 }
 
+function lockScreen() {
+  return;
+}
 
+function fillLeftBoxes(objectId) {
+  var boxNum = getMatchCount();
+  var selectedBox = document.querySelector(`.box-${boxNum}`)
+      selectedBox.classList.add(`bey${objectId}`)
+  if (boxNum === 5) {
+        showWinPage();
+      }
+  }
+
+  function showWinPage() {
+    mainPage.innerHTML = "";
+    mainPage.insertAdjacentHTML('afterbegin',
+    `<body>
+    <main class="win-page">
+        <header>
+          <h1>WHICH BEYONCÉ</h1>
+        </header>
+          <div class="inside-background">
+            <h1 class="congrats-heading">Congratulations!</h1>
+          <div class="win-info">
+            <p class="total-matches">All 5 matches were found in</p>
+            <p class="final-win-time">1 minute 30 seconds</p>
+          </div>
+          <div class="play-new-btns">
+            <button class="win-page-btn">Play Again</button>
+            <button class="win-page-btn">New Game</button>
+            </div>
+          </div>
+    </main>`);
+  }
   //if deck.selectedCards < 2
     //pushSelectedCards
 
