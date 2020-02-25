@@ -18,7 +18,7 @@ pushSelectedCards() {
       if (selectedCard.dataset.index == cards[i].cardId && selectedCards.length < 2) {
           this.selectedCards.push(cards[i]);
           // selectedObject = cards[i];
-          // console.log(selectedCards);
+          // console.log(this.selectedCards);
           cards[i].selected = true;
         }else if (this.selectedCards.length == 2) {
         //   this.checkSelectedCards();
@@ -49,6 +49,7 @@ pushSelectedCards() {
     } else {
     this.noMatch(firstCard, secondCard, firstIndex, secondIndex);
   }
+    return selectedCards[1].matchedInfo
 }
   updateMatchCount() {
     var matchCount = this.getMatchCount();

@@ -24,9 +24,12 @@ function cardFlip(event) {
   }
 
     deck.pushSelectedCards();
-
+    var counter
     if(deck.selectedCards.length == 2) {
-      deck.checkSelectedCards(event)
+      counter++
+      var selectedBox = document.querySelector(`box-${counter}`)
+      var selectedCard = deck.checkSelectedCards(event)
+      selectedBox.classList.add(`bey${selectedCard}`)
   }
 
 }
