@@ -23,30 +23,30 @@ pushSelectedCards(selectedCard) {
     //
     // }
 }
-  checkSelectedCards() {
-    var objectId = null;
-    var firstCard = this.selectedCards[0].cardId;
-    var secondCard = this.selectedCards[1].cardId;
-    var firstIndex = this.selectedCards[0].matchInfo;
-    var secondIndex = this.selectedCards[1].matchInfo;
-    //both cards disappear
-    //adds a counter to sidebar
-  if (this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
-    this.matchedCards.push(this.selectedCards);
-    this.selectedCards[0].matched = true;
-    this.selectedCards[1].matched = true;
-    objectId = this.selectedCards[0].matchInfo;
-    this.selectedCards = [];
-
-    var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
-    for(var i = 0; i < cardsToHide.length; i++) {
-      cardsToHide[i].classList.add('hidden');
-    }
-    // this.updateMatchCount();
-    } else {
-    this.noMatch(firstCard, secondCard, firstIndex, secondIndex);
-  }
-}
+//   checkSelectedCards() {
+//     var objectId = null;
+//     var firstCard = this.selectedCards[0].cardId;
+//     var secondCard = this.selectedCards[1].cardId;
+//     var firstIndex = this.selectedCards[0].matchInfo;
+//     var secondIndex = this.selectedCards[1].matchInfo;
+//     //both cards disappear
+//     //adds a counter to sidebar
+//   if (this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
+//     this.matchedCards.push(this.selectedCards);
+//     this.selectedCards[0].matched = true;
+//     this.selectedCards[1].matched = true;
+//     objectId = this.selectedCards[0].matchInfo;
+//     this.selectedCards = [];
+//
+//     var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
+//     for(var i = 0; i < cardsToHide.length; i++) {
+//       cardsToHide[i].classList.add('hidden');
+//     }
+//     // this.updateMatchCount();
+//     } else {
+//     this.noMatch(firstCard, secondCard, firstIndex, secondIndex);
+//   }
+// }
   // updateMatchCount() {
   //   var matchCount = this.getMatchCount();
   //   var matchCounter = document.querySelector('.match-counter');
@@ -56,20 +56,20 @@ pushSelectedCards(selectedCard) {
   //   return this.matchedCards.length;
   // }
 
-  noMatch(firstCard, secondCard, firstIndex, secondIndex) {
-    var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);//1-10
-    var secondSelectedCard = document.querySelector(`.cards[data-index="${secondCard}"]`);//1-10
-
-
-    if (this.selectedCards[0].matchInfo != this.selectedCards[1].matchInfo) {
-      setTimeout(function() {
-      firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
-      secondSelectedCard.classList.toggle(`bey${secondIndex}`);//1-5
-    }, 2000);
-      }
-      this.selectedCards = [];
-      console.log(this.selectedCards);
-  }
+  // noMatch(firstCard, secondCard, firstIndex, secondIndex) {
+  //   var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);//1-10
+  //   var secondSelectedCard = document.querySelector(`.cards[data-index="${secondCard}"]`);//1-10
+  //
+  //
+  //   if (this.selectedCards[0].matchInfo != this.selectedCards[1].matchInfo) {
+  //     setTimeout(function() {
+  //     firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
+  //     secondSelectedCard.classList.toggle(`bey${secondIndex}`);//1-5
+  //   }, 2000);
+  //     }
+  //     this.selectedCards = [];
+  //     console.log(this.selectedCards);
+  // }
 
     //   setTimeout(function() {
     //
@@ -87,10 +87,6 @@ pushSelectedCards(selectedCard) {
 
 
 
-
-delayTwoSeconds () {
-  console.log("delay two seconds");
-}
 
     //clear selected cards when no match//
 
@@ -150,7 +146,6 @@ delayTwoSeconds () {
     var card = new Card(fiveIndex, i);
     this.cards.push(card);
   }
-  console.log(this.cards);
   //push new cards to cards array
   }
 }
