@@ -8,72 +8,113 @@ class Deck {
 
 
 
-pushSelectedCards() {
-    var cards = this.cards;
-    var selectedCard = event.target;
-    var selectedCards = this.selectedCards;
-    var selectedObject = null;
 
-    for(var i = 0; i < this.cards.length; i++) {
-      if (selectedCard.dataset.index == cards[i].cardId && selectedCards.length < 2) {
-          this.selectedCards.push(cards[i]);
-          // selectedObject = cards[i];
-          // console.log(this.selectedCards);
-          cards[i].selected = true;
-        }else if (this.selectedCards.length == 2) {
-        //   this.checkSelectedCards();
-        }
+pushSelectedCards(selectedCard) {
+  this.selectedCards.push(selectedCard)
 
+    // for(var i = 0; i < this.cards.length; i++) {
+    //   if (selectedCard.dataset.index == cards[i].cardId && selectedCards.length < 2) {
+    //       this.selectedCards.push(cards[i]);
+    //       // selectedObject = cards[i];
+    //       // console.log(selectedCards);
+    //       cards[i].selected = true;
+    //     } else if (this.selectedCards.length == 2) {
+    //     //   this.checkSelectedCards();
+    //     }
+    //
     }
+
+// pushSelectedCards() {
+//     var cards = this.cards;
+//     var selectedCard = event.target;
+//     var selectedCards = this.selectedCards;
+//     var selectedObject = null;
+
+//     for(var i = 0; i < this.cards.length; i++) {
+//       if (selectedCard.dataset.index == cards[i].cardId && selectedCards.length < 2) {
+//           this.selectedCards.push(cards[i]);
+//           // selectedObject = cards[i];
+//           // console.log(this.selectedCards);
+//           cards[i].selected = true;
+//         }else if (this.selectedCards.length == 2) {
+//         //   this.checkSelectedCards();
+//         }
+
+//     }
+// }
+//   checkSelectedCards(event) {
+//     var objectId = null;
+//     var firstCard = this.selectedCards[0].cardId;
+//     var secondCard = this.selectedCards[1].cardId;
+//     var firstIndex = this.selectedCards[0].matchInfo;
+//     var secondIndex = this.selectedCards[1].matchInfo;
+//     //both cards disappear
+//     //adds a counter to sidebar
+//   if (this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
+//     this.matchedCards.push(this.selectedCards);
+//     this.selectedCards[0].matched = true;
+//     this.selectedCards[1].matched = true;
+//     objectId = this.selectedCards[0].matchInfo;
+//     this.selectedCards = [];
+
+//     var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
+//     for(var i = 0; i < cardsToHide.length; i++) {
+//       cardsToHide[i].classList.add('hidden');
+//     }
+//     this.updateMatchCount();
+//     } else {
+//     this.noMatch(firstCard, secondCard, firstIndex, secondIndex);
+//   }
+//     return selectedCards[1].matchedInfo
+
 }
-  checkSelectedCards(event) {
-    var objectId = null;
-    var firstCard = this.selectedCards[0].cardId;
-    var secondCard = this.selectedCards[1].cardId;
-    var firstIndex = this.selectedCards[0].matchInfo;
-    var secondIndex = this.selectedCards[1].matchInfo;
-    //both cards disappear
-    //adds a counter to sidebar
-  if (this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
-    this.matchedCards.push(this.selectedCards);
-    this.selectedCards[0].matched = true;
-    this.selectedCards[1].matched = true;
-    objectId = this.selectedCards[0].matchInfo;
-    this.selectedCards = [];
+//   checkSelectedCards() {
+//     var objectId = null;
+//     var firstCard = this.selectedCards[0].cardId;
+//     var secondCard = this.selectedCards[1].cardId;
+//     var firstIndex = this.selectedCards[0].matchInfo;
+//     var secondIndex = this.selectedCards[1].matchInfo;
+//     //both cards disappear
+//     //adds a counter to sidebar
+//   if (this.selectedCards[0].matchInfo === this.selectedCards[1].matchInfo) {
+//     this.matchedCards.push(this.selectedCards);
+//     this.selectedCards[0].matched = true;
+//     this.selectedCards[1].matched = true;
+//     objectId = this.selectedCards[0].matchInfo;
+//     this.selectedCards = [];
+//
+//     var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
+//     for(var i = 0; i < cardsToHide.length; i++) {
+//       cardsToHide[i].classList.add('hidden');
+//     }
+//     // this.updateMatchCount();
+//     } else {
+//     this.noMatch(firstCard, secondCard, firstIndex, secondIndex);
+//   }
+// }
+  // updateMatchCount() {
+  //   var matchCount = this.getMatchCount();
+  //   var matchCounter = document.querySelector('.match-counter');
+  //   matchCounter.innerText = matchCount;
+  // }
+  // getMatchCount() {
+  //   return this.matchedCards.length;
+  // }
 
-    var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
-    for(var i = 0; i < cardsToHide.length; i++) {
-      cardsToHide[i].classList.add('hidden');
-    }
-    this.updateMatchCount();
-    } else {
-    this.noMatch(firstCard, secondCard, firstIndex, secondIndex);
-  }
-    return selectedCards[1].matchedInfo
-}
-  updateMatchCount() {
-    var matchCount = this.getMatchCount();
-    var matchCounter = document.querySelector('.match-counter');
-    matchCounter.innerText = matchCount;
-  }
-  getMatchCount() {
-    return this.matchedCards.length;
-  }
-
-  noMatch(firstCard, secondCard, firstIndex, secondIndex) {
-    var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);//1-10
-    var secondSelectedCard = document.querySelector(`.cards[data-index="${secondCard}"]`);//1-10
-
-
-    if (this.selectedCards[0].matchInfo != this.selectedCards[1].matchInfo) {
-      setTimeout(function() {
-      firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
-      secondSelectedCard.classList.toggle(`bey${secondIndex}`);//1-5
-    }, 2000);
-      }
-      this.selectedCards = [];
-      console.log(this.selectedCards);
-  }
+  // noMatch(firstCard, secondCard, firstIndex, secondIndex) {
+  //   var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);//1-10
+  //   var secondSelectedCard = document.querySelector(`.cards[data-index="${secondCard}"]`);//1-10
+  //
+  //
+  //   if (this.selectedCards[0].matchInfo != this.selectedCards[1].matchInfo) {
+  //     setTimeout(function() {
+  //     firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
+  //     secondSelectedCard.classList.toggle(`bey${secondIndex}`);//1-5
+  //   }, 2000);
+  //     }
+  //     this.selectedCards = [];
+  //     console.log(this.selectedCards);
+  // }
 
     //   setTimeout(function() {
     //
@@ -91,10 +132,6 @@ pushSelectedCards() {
 
 
 
-
-delayTwoSeconds () {
-  console.log("delay two seconds");
-}
 
     //clear selected cards when no match//
 
@@ -125,12 +162,13 @@ delayTwoSeconds () {
     //no match = two cards flip back over after two seconds
 
 
-  moveToMatched() {
+  moveToMatched(matchedCardsInstance) {
+    this.matchedCards.push(matchedCardsInstance);
     // this.matchedCards.push(this.selectedCards);
     // this.selectedCards[0].matched = true;
     // this.selectedCards[1].matched = true;
     // // console.log(this.matchedCards);
-    // this.selectedCards = [];
+    this.selectedCards = [];
   }
 
     //when a user matches two like cards
@@ -153,7 +191,6 @@ delayTwoSeconds () {
     var card = new Card(fiveIndex, i);
     this.cards.push(card);
   }
-  console.log(this.cards);
   //push new cards to cards array
   }
 }
