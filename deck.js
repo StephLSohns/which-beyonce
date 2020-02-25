@@ -67,7 +67,7 @@ pushSelectedCards(selectedCard) {
 //   }
 //     return selectedCards[1].matchedInfo
 
-}
+
 //   checkSelectedCards() {
 //     var objectId = null;
 //     var firstCard = this.selectedCards[0].cardId;
