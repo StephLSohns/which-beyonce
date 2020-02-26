@@ -2,26 +2,25 @@ var deck = new Deck();
 
 
 var gameSpace = document.querySelector('.game-space');
-var lockCards = false;
 var mainPage = document.querySelector('.game');
+var lockCards = false;
 var startTime;
 var endTime;
 var totalTime;
 var totalSeconds;
+var totalMiliseconds;
+var fastestTimes = [];
 // var flipVerticalFwd = document.querySelector('.flip-vertical-fwd');
 gameSpace.addEventListener('click', cardFlip);
 
 
 
 function cardFlip(event) {
-  // var start = new Date();
+
   var selectedCard = event.target;
 
-  // var canFlip = true;
-    // if (lockCards) {
-    // timer = window.setInterval(lockScreen, 2000);
-    // }
-    if (deck.selectedCards.length < 2 && selectedCard.matches('.cards')) {
+
+    if (deck.selectedCards.length < 2 && selectedCard.matches('.cards') && !lockCards) {
       selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`)
       selectedCard.classList.add('selected');
 
@@ -31,8 +30,9 @@ function cardFlip(event) {
       deck.pushSelectedCards(selectedCardInstance);
     }
     if (deck.selectedCards.length === 2) {
-      checkSelectedCards();
       lockCards = true;
+      checkSelectedCards();
+
     }
 
   }
@@ -49,6 +49,7 @@ function checkSelectedCards() {
         cardsToHide[i].classList.add('hidden');
         deck.moveToMatched(matchedCardsInstance);
       }
+    lockCards = false;
     updateMatchCount();
     fillLeftBoxes(objectId);
   } else {
@@ -77,46 +78,51 @@ function noMatch() {
     var secondSelectedCard = document.querySelector(`.cards[data-index="${secondCard}"]`);//1-10
     setTimeout(function() {
     firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
-    secondSelectedCard.classList.toggle(`bey${secondIndex}`);//1-5
+    secondSelectedCard.classList.toggle(`bey${secondIndex}`);//1
+    lockCards = false;
   }, 2000);
+
     }
+
     deck.selectedCards = [];
+
+
 }
 
-function lockScreen() {
-  return;
-}
+
+
 
 function fillLeftBoxes(objectId) {
   var boxNum = getMatchCount();
   var selectedBox = document.querySelector(`.box-${boxNum}`)
       selectedBox.classList.add(`bey${objectId}`)
   if (boxNum === 5) {
+        endTime = new Date();
         getTime();
         showWinPage();
-        endTime = new Date();
+
 
       }
   }
 
   function getTime() {
-      totalSeconds = (endTime - startTime / 1000);
-      console.log(totalSeconds);
+     totalMiliseconds = (endTime - startTime);
+     totalSeconds = (totalMiliseconds / 1000);
+     // pushTime();
+     return Number(totalSeconds);
+
   }
 
   function showWinPage() {
     mainPage.innerHTML = "";
     mainPage.insertAdjacentHTML('afterbegin',
-    `<body>
+    `
     <main class="win-page">
-        <header>
-          <h1>WHICH BEYONCÉ</h1>
-        </header>
           <div class="inside-background">
             <h1 class="congrats-heading">Congratulations!</h1>
           <div class="win-info">
             <p class="total-matches">All 5 matches were found in</p>
-            <p class="final-win-time">${totalSeconds}</p>
+            <p class="final-win-time">${totalSeconds} Seconds!</p>
           </div>
           <div class="play-new-btns">
             <button class="win-page-btn">Play Again</button>
@@ -153,7 +159,6 @@ function fillLeftBoxes(objectId) {
 
 
 
-
 window.onload = createDeck();
 
 
@@ -171,7 +176,13 @@ function showCards (event) {
   gameSpace.innerHTML+= `<div class="cards card-${cardsArray[i].cardId}" data-id="${cardsArray[i].matchInfo}" data-index="${cardsArray[i].cardId}">
     <p>${i + 1}</p>
   </div>`
+  }
 }
 
+// pushTime() {
+//   var currentTime = getTime();
+//   fastestTimes.push(currentTime);
+//   sortTimes();
+// }
+
   //toggle
-}

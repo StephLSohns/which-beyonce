@@ -163,10 +163,6 @@ pushSelectedCards(selectedCard) {
 
   moveToMatched(matchedCardsInstance) {
     this.matchedCards.push(matchedCardsInstance);
-    // this.matchedCards.push(this.selectedCards);
-    // this.selectedCards[0].matched = true;
-    // this.selectedCards[1].matched = true;
-    // // console.log(this.matchedCards);
     this.selectedCards = [];
   }
 
