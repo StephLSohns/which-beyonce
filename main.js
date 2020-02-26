@@ -4,14 +4,19 @@ var deck = new Deck();
 var gameSpace = document.querySelector('.game-space');
 var lockCards = false;
 var mainPage = document.querySelector('.game');
+var startTime;
+var endTime;
+var totalTime;
+var totalSeconds;
 // var flipVerticalFwd = document.querySelector('.flip-vertical-fwd');
 gameSpace.addEventListener('click', cardFlip);
 
 
 
 function cardFlip(event) {
-
+  // var start = new Date();
   var selectedCard = event.target;
+
   // var canFlip = true;
     // if (lockCards) {
     // timer = window.setInterval(lockScreen, 2000);
@@ -31,6 +36,8 @@ function cardFlip(event) {
     }
 
   }
+
+
 
 function checkSelectedCards() {
     var objectId = null;
@@ -85,8 +92,16 @@ function fillLeftBoxes(objectId) {
   var selectedBox = document.querySelector(`.box-${boxNum}`)
       selectedBox.classList.add(`bey${objectId}`)
   if (boxNum === 5) {
+        getTime();
         showWinPage();
+        endTime = new Date();
+
       }
+  }
+
+  function getTime() {
+      totalSeconds = (endTime - startTime / 1000);
+      console.log(totalSeconds);
   }
 
   function showWinPage() {
@@ -101,7 +116,7 @@ function fillLeftBoxes(objectId) {
             <h1 class="congrats-heading">Congratulations!</h1>
           <div class="win-info">
             <p class="total-matches">All 5 matches were found in</p>
-            <p class="final-win-time">1 minute 30 seconds</p>
+            <p class="final-win-time">${totalSeconds}</p>
           </div>
           <div class="play-new-btns">
             <button class="win-page-btn">Play Again</button>
@@ -123,7 +138,17 @@ function fillLeftBoxes(objectId) {
   //   if(deck.selectedCards.length == 2) {
   //     deck.checkSelectedCards(event)
   // }
+// function getTime() {
+//   totalTime = (endTime - startTime);
+//   totalSeconds = (totalTime / 1000);
+//   return(totalSeconds);
+//   }
 
+  // // Do things here
+  // var finish = new Date();
+  // var difference = new Date();
+  // difference.setTime(finish.getTime() - start.getTime());
+  // alert( difference.getMilliseconds() );
 
 
 
@@ -133,6 +158,7 @@ window.onload = createDeck();
 
 
 function createDeck() {
+  startTime = new Date();
   deck.fillDeck();
   showCards();
   //display cards
