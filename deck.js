@@ -21,7 +21,6 @@ pushSelectedCards(selectedCard) {
     //     } else if (this.selectedCards.length == 2) {
     //     //   this.checkSelectedCards();
     //     }
-    //
     }
 
 // pushSelectedCards() {
