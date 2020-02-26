@@ -13,7 +13,7 @@ var fastestTimes = [];
 // var flipVerticalFwd = document.querySelector('.flip-vertical-fwd');
 gameSpace.addEventListener('click', cardFlip);
 
-
+window.onload = createDeck();
 
 function cardFlip(event) {
 
@@ -23,13 +23,17 @@ function cardFlip(event) {
     if (deck.selectedCards.length < 2 && selectedCard.matches('.cards') && !lockCards) {
       selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`)
       selectedCard.classList.add('selected');
-
+      // console.log(selectedCardId);
       var selectedCardId = parseInt(selectedCard.dataset.index) - 1;
       var selectedCardInstance = deck.cards[selectedCardId];
+      console.log(selectedCardId);
 
       deck.pushSelectedCards(selectedCardInstance);
+        // console.log(selectedCardInstance, deck.selectedCards);
+      console.log(selectedCardInstance);
     }
-    if (deck.selectedCards.length === 2) {
+
+    else if (deck.selectedCards.length === 2) {
       lockCards = true;
       checkSelectedCards();
 
@@ -41,13 +45,14 @@ function cardFlip(event) {
 
 function checkSelectedCards() {
     var objectId = null;
-    if (deck.selectedCards[0].matchInfo === deck.selectedCards[1].matchInfo && deck.selectedCards[0].cardId != deck.selectedCards[1].cardId) {
+    if (deck.selectedCards[0].matchInfo === deck.selectedCards[1].matchInfo) {
       objectId = deck.selectedCards[0].matchInfo;
       var matchedCardsInstance = [deck.selectedCards[0], deck.selectedCards[1]]
       var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
       for(var i = 0; i < cardsToHide.length; i++) {
         cardsToHide[i].classList.add('hidden');
         deck.moveToMatched(matchedCardsInstance);
+        console.log(matchedCardsInstance);
       }
     lockCards = false;
     updateMatchCount();
@@ -74,7 +79,7 @@ function noMatch() {
   var firstIndex = deck.selectedCards[0].matchInfo;
   var secondIndex = deck.selectedCards[1].matchInfo;
   if (deck.selectedCards[0].matchInfo != deck.selectedCards[1].matchInfo) {
-    var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);//1-10
+    var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);
     var secondSelectedCard = document.querySelector(`.cards[data-index="${secondCard}"]`);//1-10
     setTimeout(function() {
     firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
@@ -159,12 +164,15 @@ function fillLeftBoxes(objectId) {
 
 
 
-window.onload = createDeck();
+// window.onload = createDeck();
 
 
 function createDeck() {
   startTime = new Date();
+  //shuffle cards
+  //send to fill deck
   deck.fillDeck();
+  // deck.shuffle();
   showCards();
   //display cards
 

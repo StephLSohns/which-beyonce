@@ -141,14 +141,17 @@ pushSelectedCards(selectedCard) {
 
 
 
-  shuffle() {
-    //for (var i = this.cards.length - 1; i > 0; i--) {
-    //var j = Math.floor(Math.random() * (i + 1));
-    // [this.cards[i].matchInfo, this.cards[j].matchInfo] =
-    // [this.cards[j].matchInfo, this.cards[i].matchInfo];
-  // }randomize placement of all cards (this.cards)
-   }
-
+//   shuffle() {
+//     var j, x, i;
+//     for (var i = this.cards.length - 1; i > 0; i--) {
+//     var j = Math.floor(Math.random() * (i + 1));
+//
+//     x = this.cards[i];
+//     this.cards[i] = this.cards[j];
+//     this.cards[j] = x;
+//   // }randomize placement of all cards (this.cards)
+//    }
+// }
 
 
     //clear selected cards when no match//
@@ -184,6 +187,18 @@ pushSelectedCards(selectedCard) {
     var card = new Card(fiveIndex, i);
     this.cards.push(card);
   }
-  //push new cards to cards array
+  this.shuffle();
   }
+
+  shuffle() {
+    var j, x, i;
+    for (var i = this.cards.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+
+    x = this.cards[i];
+    this.cards[i] = this.cards[j];
+    this.cards[j] = x;
+  // }randomize placement of all cards (this.cards)
+   }
+}
 }
