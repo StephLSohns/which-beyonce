@@ -6,11 +6,8 @@ class Deck {
   }
 
 
-
-
-
-pushSelectedCards(selectedCard) {
-  this.selectedCards.push(selectedCard)
+  pushSelectedCards(selectedCard) {
+    this.selectedCards.push(selectedCard)
 
     // for(var i = 0; i < this.cards.length; i++) {
     //   if (selectedCard.dataset.index == cards[i].cardId && selectedCards.length < 2) {
@@ -21,7 +18,7 @@ pushSelectedCards(selectedCard) {
     //     } else if (this.selectedCards.length == 2) {
     //     //   this.checkSelectedCards();
     //     }
-    }
+  }
 
 // pushSelectedCards() {
 //     var cards = this.cards;
@@ -143,14 +140,18 @@ pushSelectedCards(selectedCard) {
 
 
 
-  // shuffle()
-    //for (var i = this.cards.length - 1; i > 0; i--) {
-    //var j = Math.floor(Math.random() * (i + 1));
-    // [this.cards[i].matchInfo, this.cards[j].matchInfo] =
-    // [this.cards[j].matchInfo, this.cards[i].matchInfo];
-  // }randomize placement of all cards (this.cards)
 
-
+//   shuffle() {
+//     var j, x, i;
+//     for (var i = this.cards.length - 1; i > 0; i--) {
+//     var j = Math.floor(Math.random() * (i + 1));
+//
+//     x = this.cards[i];
+//     this.cards[i] = this.cards[j];
+//     this.cards[j] = x;
+//   // }randomize placement of all cards (this.cards)
+//    }
+// }
 
 
     //clear selected cards when no match//
@@ -163,10 +164,6 @@ pushSelectedCards(selectedCard) {
 
   moveToMatched(matchedCardsInstance) {
     this.matchedCards.push(matchedCardsInstance);
-    // this.matchedCards.push(this.selectedCards);
-    // this.selectedCards[0].matched = true;
-    // this.selectedCards[1].matched = true;
-    // // console.log(this.matchedCards);
     this.selectedCards = [];
   }
 
@@ -180,17 +177,32 @@ pushSelectedCards(selectedCard) {
 
   fillDeck() {
     var zeroIndex = 0;
-  for(var i = 1; i < 6; i++) {
-    zeroIndex++;
-    var card = new Card(zeroIndex, i);
-    this.cards.push(card);
-  }
+    for(var i = 1; i < 6; i++) {
+      zeroIndex++;
+      var card = new Card(zeroIndex, i);
+      this.cards.push(card);
+    }
+
     var fiveIndex = 5;
-  for(var i = 1; i < 6; i++) {
-    fiveIndex++;
-    var card = new Card(fiveIndex, i);
-    this.cards.push(card);
+
+
+    for(var i = 1; i < 6; i++) {
+      fiveIndex++;
+      var card = new Card(fiveIndex, i);
+      this.cards.push(card);
+    }
+
+    this.shuffle();
   }
-  //push new cards to cards array
-}
+
+  shuffle() {
+    var randomNum, replaceNum;
+    for (var i = this.cards.length - 1; i > 0; i--) {
+      randomNum = Math.floor(Math.random() * (i + 1));
+
+      replaceNum = this.cards[i];
+      this.cards[i] = this.cards[randomNum];
+      this.cards[randomNum] = replaceNum;
+   }
+ }
 }
