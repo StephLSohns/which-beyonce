@@ -5,6 +5,7 @@ class Deck {
     this.selectedCards = [];//two user selected cards *2 (which = match or noMatch)
   }
 
+
   pushSelectedCards(selectedCard) {
     this.selectedCards.push(selectedCard)
 
@@ -139,6 +140,7 @@ class Deck {
 
 
 
+
 //   shuffle() {
 //     var j, x, i;
 //     for (var i = this.cards.length - 1; i > 0; i--) {
@@ -165,6 +167,7 @@ class Deck {
     this.selectedCards = [];
   }
 
+
     //when a user matches two like cards
     //those cards are pushed to the matched array
     //also one picture representing that match is moved to matched boxes
@@ -181,6 +184,7 @@ class Deck {
     }
 
     var fiveIndex = 5;
+
 
     for(var i = 1; i < 6; i++) {
       fiveIndex++;
