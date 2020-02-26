@@ -13,50 +13,47 @@ var fastestTimes = [];
 // var flipVerticalFwd = document.querySelector('.flip-vertical-fwd');
 gameSpace.addEventListener('click', cardFlip);
 
-window.onload = createDeck();
+
 
 function cardFlip(event) {
-
   var selectedCard = event.target;
 
+  if (deck.selectedCards.length < 2 && selectedCard.matches('.cards') && !lockCards) {
+    selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`)
 
-    if (deck.selectedCards.length < 2 && selectedCard.matches('.cards') && !lockCards) {
-      selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`)
-      selectedCard.classList.add('selected');
-      // console.log(selectedCardId);
-      var selectedCardId = parseInt(selectedCard.dataset.index) - 1;
-      var selectedCardInstance = deck.cards[selectedCardId];
-      console.log(selectedCardId);
+    var selectedCardId = parseInt(selectedCard.dataset.index);
+    var selectedCardInstance = deck.cards.find(function(card) {
+      return card.cardId === selectedCardId
+    })
 
-      deck.pushSelectedCards(selectedCardInstance);
-        // console.log(selectedCardInstance, deck.selectedCards);
-      console.log(selectedCardInstance);
-    }
 
-    else if (deck.selectedCards.length === 2) {
-      lockCards = true;
-      checkSelectedCards();
 
-    }
-
+    deck.pushSelectedCards(selectedCardInstance);
   }
+
+  if (deck.selectedCards.length === 2) {
+    lockCards = true;
+    checkSelectedCards();
+  }
+}
 
 
 
 function checkSelectedCards() {
-    var objectId = null;
-    if (deck.selectedCards[0].matchInfo === deck.selectedCards[1].matchInfo) {
-      objectId = deck.selectedCards[0].matchInfo;
-      var matchedCardsInstance = [deck.selectedCards[0], deck.selectedCards[1]]
-      var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
-      for(var i = 0; i < cardsToHide.length; i++) {
-        cardsToHide[i].classList.add('hidden');
-        deck.moveToMatched(matchedCardsInstance);
-        console.log(matchedCardsInstance);
-      }
-    lockCards = false;
-    updateMatchCount();
-    fillLeftBoxes(objectId);
+  var objectId = null;
+  var cardOne = deck.selectedCards[0]
+  var cardTwo = deck.selectedCards[1]
+  if (cardOne.matchInfo === cardTwo.matchInfo && cardOne.cardId != cardTwo.cardId) {
+    objectId = cardOne.matchInfo;
+    var matchedCardsInstance = [cardOne, cardTwo]
+    var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
+    for(var i = 0; i < cardsToHide.length; i++) {
+      cardsToHide[i].classList.add('hidden');
+      deck.moveToMatched(matchedCardsInstance);
+    }
+  lockCards = false;
+  updateMatchCount();
+  fillLeftBoxes(objectId);
   } else {
     noMatch();
   }
@@ -79,7 +76,7 @@ function noMatch() {
   var firstIndex = deck.selectedCards[0].matchInfo;
   var secondIndex = deck.selectedCards[1].matchInfo;
   if (deck.selectedCards[0].matchInfo != deck.selectedCards[1].matchInfo) {
-    var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);
+    var firstSelectedCard = document.querySelector(`.cards[data-index="${firstCard}"]`);//1-10
     var secondSelectedCard = document.querySelector(`.cards[data-index="${secondCard}"]`);//1-10
     setTimeout(function() {
     firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
@@ -135,6 +132,29 @@ function fillLeftBoxes(objectId) {
             </div>
           </div>
     </main>`);
+
+    saveTime();
+  }
+
+  function saveTime() {
+    //grab current time
+    //save time to storage
+  }
+
+  function getTimes () {
+    //pull all saved times
+    // return a new array of times
+  }
+
+  function displayTimes() {
+    //sort TIMES
+    //display top three
+  }
+
+  function topTimes() {
+    //sort through array for best time
+    //return array of sortedTimes
+
   }
   //if deck.selectedCards < 2
     //pushSelectedCards
@@ -164,15 +184,12 @@ function fillLeftBoxes(objectId) {
 
 
 
-// window.onload = createDeck();
+window.onload = createDeck();
 
 
 function createDeck() {
   startTime = new Date();
-  //shuffle cards
-  //send to fill deck
   deck.fillDeck();
-  // deck.shuffle();
   showCards();
   //display cards
 
@@ -186,6 +203,7 @@ function showCards (event) {
   </div>`
   }
 }
+
 
 // pushTime() {
 //   var currentTime = getTime();

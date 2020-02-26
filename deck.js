@@ -5,10 +5,8 @@ class Deck {
     this.selectedCards = [];//two user selected cards *2 (which = match or noMatch)
   }
 
-
-
-pushSelectedCards(selectedCard) {
-  this.selectedCards.push(selectedCard)
+  pushSelectedCards(selectedCard) {
+    this.selectedCards.push(selectedCard)
 
     // for(var i = 0; i < this.cards.length; i++) {
     //   if (selectedCard.dataset.index == cards[i].cardId && selectedCards.length < 2) {
@@ -19,7 +17,7 @@ pushSelectedCards(selectedCard) {
     //     } else if (this.selectedCards.length == 2) {
     //     //   this.checkSelectedCards();
     //     }
-    }
+  }
 
 // pushSelectedCards() {
 //     var cards = this.cards;
@@ -176,29 +174,31 @@ pushSelectedCards(selectedCard) {
 
   fillDeck() {
     var zeroIndex = 0;
-  for(var i = 1; i < 6; i++) {
-    zeroIndex++;
-    var card = new Card(zeroIndex, i);
-    this.cards.push(card);
-  }
+    for(var i = 1; i < 6; i++) {
+      zeroIndex++;
+      var card = new Card(zeroIndex, i);
+      this.cards.push(card);
+    }
+
     var fiveIndex = 5;
-  for(var i = 1; i < 6; i++) {
-    fiveIndex++;
-    var card = new Card(fiveIndex, i);
-    this.cards.push(card);
-  }
-  this.shuffle();
+
+    for(var i = 1; i < 6; i++) {
+      fiveIndex++;
+      var card = new Card(fiveIndex, i);
+      this.cards.push(card);
+    }
+
+    this.shuffle();
   }
 
   shuffle() {
-    var j, x, i;
+    var randomNum, replaceNum;
     for (var i = this.cards.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
+      randomNum = Math.floor(Math.random() * (i + 1));
 
-    x = this.cards[i];
-    this.cards[i] = this.cards[j];
-    this.cards[j] = x;
-  // }randomize placement of all cards (this.cards)
+      replaceNum = this.cards[i];
+      this.cards[i] = this.cards[randomNum];
+      this.cards[randomNum] = replaceNum;
    }
-}
+ }
 }
