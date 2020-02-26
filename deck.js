@@ -7,8 +7,6 @@ class Deck {
 
 
 
-Hello
-
 pushSelectedCards(selectedCard) {
   this.selectedCards.push(selectedCard)
 
@@ -143,13 +141,13 @@ pushSelectedCards(selectedCard) {
 
 
 
-  shuffle()
+  shuffle() {
     //for (var i = this.cards.length - 1; i > 0; i--) {
     //var j = Math.floor(Math.random() * (i + 1));
     // [this.cards[i].matchInfo, this.cards[j].matchInfo] =
     // [this.cards[j].matchInfo, this.cards[i].matchInfo];
   // }randomize placement of all cards (this.cards)
-
+   }
 
 
 
@@ -161,10 +159,10 @@ pushSelectedCards(selectedCard) {
     //no match = two cards flip back over after two seconds
 
 
-  moveToMatched(matchedCardsInstance) 
+  moveToMatched(matchedCardsInstance) {
     this.matchedCards.push(matchedCardsInstance);
     this.selectedCards = [];
-
+  }
 
     //when a user matches two like cards
     //those cards are pushed to the matched array
@@ -188,3 +186,4 @@ pushSelectedCards(selectedCard) {
   }
   //push new cards to cards array
   }
+}
