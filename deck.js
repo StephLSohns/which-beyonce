@@ -7,7 +7,7 @@ class Deck {
 
 
 
-
+Hello
 
 pushSelectedCards(selectedCard) {
   this.selectedCards.push(selectedCard)
@@ -21,7 +21,6 @@ pushSelectedCards(selectedCard) {
     //     } else if (this.selectedCards.length == 2) {
     //     //   this.checkSelectedCards();
     //     }
-    //
     }
 
 // pushSelectedCards() {
