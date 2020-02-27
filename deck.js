@@ -5,9 +5,11 @@ class Deck {
     this.selectedCards = [];//two user selected cards *2 (which = match or noMatch)
   }
 
+
   pushSelectedCards(selectedCard) {
     this.selectedCards.push(selectedCard)
   }
+
 
   moveToMatched(matchedCardsInstance) {
     this.matchedCards.push(matchedCardsInstance);
@@ -23,6 +25,7 @@ class Deck {
     }
 
     var fiveIndex = 5;
+
 
     for(var i = 1; i < 6; i++) {
       fiveIndex++;
@@ -42,5 +45,5 @@ class Deck {
       this.cards[i] = this.cards[randomNum];
       this.cards[randomNum] = replaceNum;
     }
- }
+  }
 }
