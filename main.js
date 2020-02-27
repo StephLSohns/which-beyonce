@@ -16,23 +16,28 @@ var thirdTime = allTimes[2] || "0";
 var secondTimeDisplay = document.querySelector('.second-place');
 var topTimeDisplay = document.querySelector('.first-place');
 var thirdTimeDisplay = document.querySelector('.third-place');
+
+
 topTimeDisplay.innerText = `${topTime}`;
 secondTimeDisplay.innerText = `${secondTime}`;
 thirdTimeDisplay.innerText = `${thirdTime}`;
 
-// var flipVerticalFwd = document.querySelector('.flip-vertical-fwd');
+
 gameSpace.addEventListener('click', cardFlip);
-// playNewGame.addEventListener('click', resetGame);
+
 
 window.onload = createDeck();
-// window.onload = getTimes();
 
 
+//This function is called every time a card on the DOM is clicked
+//It displays the image associated with the card, and pushed the instance of
+//that card into the deck.selectedCards array when two cards are selected.
 function cardFlip(event) {
   var selectedCard = event.target;
 
   if (deck.selectedCards.length < 2 && selectedCard.matches('.cards') && !lockCards) {
-    selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`)
+      selectedCard.classList.toggle(`bey${selectedCard.dataset.id}`);
+
 
     var selectedCardId = parseInt(selectedCard.dataset.index);
     var selectedCardInstance = deck.cards.find(function(card) {
@@ -43,44 +48,46 @@ function cardFlip(event) {
   }
 
   if (deck.selectedCards.length === 2) {
-    lockCards = true;
-    checkSelectedCards();
+      lockCards = true;
+      checkSelectedCards();
   }
 }
-
-
-
+//This function checks the deck class selectedCards array for a match
+//If there is a match, it hides the cards on the DOM, and calls the updateMatchCount and fillLeftBoxes functions
+//If there is no match, it calls the noMatch function
 function checkSelectedCards() {
   var objectId = null;
-  var cardOne = deck.selectedCards[0]
-  var cardTwo = deck.selectedCards[1]
+  var cardOne = deck.selectedCards[0];
+  var cardTwo = deck.selectedCards[1];
   if (cardOne.matchInfo === cardTwo.matchInfo && cardOne.cardId != cardTwo.cardId) {
-    objectId = cardOne.matchInfo;
-    var matchedCardsInstance = [cardOne, cardTwo]
-    var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
-    for(var i = 0; i < cardsToHide.length; i++) {
+      objectId = cardOne.matchInfo;
+      var matchedCardsInstance = [cardOne, cardTwo]
+      var cardsToHide = document.querySelectorAll(`.cards[data-id="${objectId}"]`);
+  for (var i = 0; i < cardsToHide.length; i++) {
       cardsToHide[i].classList.add('hidden');
       deck.moveToMatched(matchedCardsInstance);
-    }
-  lockCards = false;
-  updateMatchCount();
-  fillLeftBoxes(objectId);
-  } else {
+  }
+    lockCards = false;
+    updateMatchCount();
+    fillLeftBoxes(objectId);
+} else {
     noMatch();
   }
 }
 
+//Updates the match count on the DOM main game page each time there's a match
 function updateMatchCount() {
-  var matchCount = getMatchCount();
-  var matchCounter = document.querySelector('.match-counter');
-   matchCounter.innerText = matchCount;
+    var matchCount = getMatchCount();
+    var matchCounter = document.querySelector('.match-counter');
+    matchCounter.innerText = matchCount;
 }
 
+//This function returns a number 1-5, which is used for DOM display purposes
 function getMatchCount() {
-  return deck.matchedCards.length / 2;
+    return deck.matchedCards.length / 2;
 }
 
-
+//This function flips non-matched cards back over after one second and resets the selectedCards array
 function noMatch() {
   var firstCard = deck.selectedCards[0].cardId;
   var secondCard = deck.selectedCards[1].cardId;
@@ -98,33 +105,28 @@ function noMatch() {
     }
 
     deck.selectedCards = [];
-
-
 }
 
-
-
-
+//Takes in the objectId (unique 1-5 number) and the return of getMatchCount to display elements on DOM
 function fillLeftBoxes(objectId) {
   var boxNum = getMatchCount();
   var selectedBox = document.querySelector(`.box-${boxNum}`)
       selectedBox.classList.add(`bey${objectId}`)
   if (boxNum === 5) {
-        endTime = new Date();
-        getTime();
-        showWinPage();
-
-      }
+      endTime = new Date();
+      getTime();
+      showWinPage();
+    }
   }
 
+//Converts milliseconds to seconds
   function getTime() {
      totalMiliseconds = (endTime - startTime);
      totalSeconds = (totalMiliseconds / 1000);
-     // pushTime();
-     return Number();
 
   }
 
+//toggles win page on the DOM
   function showWinPage() {
     mainPage.innerHTML = "";
     mainPage.insertAdjacentHTML('afterbegin',
@@ -145,89 +147,43 @@ function fillLeftBoxes(objectId) {
 
     saveTime();
 
-  }
+}
 
+//Pushes most recent time into an array that is then sorted and stored in local storage
   function saveTime() {
     debugger
     allTimes.push(totalSeconds);
-    sortTimes()
+    sortTimes();
     var stringTimes = JSON.stringify(allTimes);
     localStorage.setItem('times', stringTimes);
-    // getTimes();
+
   }
 
-  // function getTimes () {
-  //   var retrievedTimes = localStorage.getItem('times');
-  //   var parsedTimes = JSON.parse(retrievedTimes);
-  //   sortTimes(parsedTimes);
-  // }
-
+//Sorts times before they are stored locally,
   function sortTimes() {
     allTimes.sort(function(a, b) {
       return a - b;
     })
-    // displayTimes();
+
   }
 
-  // function displayTimes() {
-  //   var displayTimes = sortTimes();
-  //   for (var i = 0; i < displayTimes.length; i++) {
-  //   //
-  //   // }
-  //     topTime = displayTimes[0] ;
-  //     secondTime = displayTimes[1];
-  //     thirdTime = displayTimes[2];
-  //
-  //   }
-  //   //display top three
-  // }
 
 
-  //if deck.selectedCards < 2
-    //pushSelectedCards
-
-    //else checkSelectedCards;
-    //if match invoke updateMatchCount
-    //push selectedCards to matchedCards if they match
-
-
-    // deck.pushSelectedCards();
-
-  //   if(deck.selectedCards.length == 2) {
-  //     deck.checkSelectedCards(event)
-  // }
-// function getTime() {
-//   totalTime = (endTime - startTime);
-//   totalSeconds = (totalTime / 1000);
-//   return(totalSeconds);
-//   }
-
-  // // Do things here
-  // var finish = new Date();
-  // var difference = new Date();
-  // difference.setTime(finish.getTime() - start.getTime());
-  // alert( difference.getMilliseconds() );
-
-
-
-
-// window.onload = createDeck();
-// window.onload = getTimes();
-
-
+//Called on page load, it starts game timer and fills the cards array on the deck class, as well as calls the
+//function which creates our cards on the DOM
 function createDeck() {
   startTime = new Date();
   deck.fillDeck();
   showCards();
-  //display cards
-
 }
 
+
+//Creates cards on the DOM, and assigns them unique 1-10 values, and semi-unique 1-5 values
 function showCards (event) {
   var cardsArray = deck.cards;
   for(var i = 0; i < cardsArray.length; i++) {
   gameSpace.innerHTML+= `<div class="cards card-${cardsArray[i].cardId}" data-id="${cardsArray[i].matchInfo}" data-index="${cardsArray[i].cardId}">
-    <p>${i + 1}</p>
+    <p class="b-class">B</p>
   </div>`
   }
 }
