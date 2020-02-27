@@ -1,6 +1,6 @@
 var deck = new Deck();
 
-
+var playNewGame = document.querySelector('.play-new-btns')
 var gameSpace = document.querySelector('.game-space');
 var mainPage = document.querySelector('.game');
 var lockCards = false;
@@ -9,10 +9,23 @@ var endTime;
 var totalTime;
 var totalSeconds;
 var totalMiliseconds;
-var fastestTimes = [];
+var allTimes = JSON.parse(localStorage.getItem('times')) || [];
+var topTime = allTimes[0] || "0";
+var secondTime = allTimes[1] || "0";
+var thirdTime = allTimes[2] || "0";
+var secondTimeDisplay = document.querySelector('.second-place');
+var topTimeDisplay = document.querySelector('.first-place');
+var thirdTimeDisplay = document.querySelector('.third-place');
+topTimeDisplay.innerText = `${topTime}`;
+secondTimeDisplay.innerText = `${secondTime}`;
+thirdTimeDisplay.innerText = `${thirdTime}`;
+
 // var flipVerticalFwd = document.querySelector('.flip-vertical-fwd');
 gameSpace.addEventListener('click', cardFlip);
+// playNewGame.addEventListener('click', resetGame);
 
+window.onload = createDeck();
+// window.onload = getTimes();
 
 
 function cardFlip(event) {
@@ -25,8 +38,6 @@ function cardFlip(event) {
     var selectedCardInstance = deck.cards.find(function(card) {
       return card.cardId === selectedCardId
     })
-
-
 
     deck.pushSelectedCards(selectedCardInstance);
   }
@@ -82,7 +93,7 @@ function noMatch() {
     firstSelectedCard.classList.toggle(`bey${firstIndex}`);//1-5
     secondSelectedCard.classList.toggle(`bey${secondIndex}`);//1
     lockCards = false;
-  }, 2000);
+  }, 1000);
 
     }
 
@@ -103,7 +114,6 @@ function fillLeftBoxes(objectId) {
         getTime();
         showWinPage();
 
-
       }
   }
 
@@ -111,7 +121,7 @@ function fillLeftBoxes(objectId) {
      totalMiliseconds = (endTime - startTime);
      totalSeconds = (totalMiliseconds / 1000);
      // pushTime();
-     return Number(totalSeconds);
+     return Number();
 
   }
 
@@ -134,28 +144,45 @@ function fillLeftBoxes(objectId) {
     </main>`);
 
     saveTime();
+
   }
 
   function saveTime() {
-    //grab current time
-    //save time to storage
+    debugger
+    allTimes.push(totalSeconds);
+    sortTimes()
+    var stringTimes = JSON.stringify(allTimes);
+    localStorage.setItem('times', stringTimes);
+    // getTimes();
   }
 
-  function getTimes () {
-    //pull all saved times
-    // return a new array of times
+  // function getTimes () {
+  //   var retrievedTimes = localStorage.getItem('times');
+  //   var parsedTimes = JSON.parse(retrievedTimes);
+  //   sortTimes(parsedTimes);
+  // }
+
+  function sortTimes() {
+    allTimes.sort(function(a, b) {
+      return a - b;
+    })
+    // displayTimes();
   }
 
-  function displayTimes() {
-    //sort TIMES
-    //display top three
-  }
+  // function displayTimes() {
+  //   var displayTimes = sortTimes();
+  //   for (var i = 0; i < displayTimes.length; i++) {
+  //   //
+  //   // }
+  //     topTime = displayTimes[0] ;
+  //     secondTime = displayTimes[1];
+  //     thirdTime = displayTimes[2];
+  //
+  //   }
+  //   //display top three
+  // }
 
-  function topTimes() {
-    //sort through array for best time
-    //return array of sortedTimes
 
-  }
   //if deck.selectedCards < 2
     //pushSelectedCards
 
@@ -184,7 +211,8 @@ function fillLeftBoxes(objectId) {
 
 
 
-window.onload = createDeck();
+// window.onload = createDeck();
+// window.onload = getTimes();
 
 
 function createDeck() {
@@ -203,12 +231,3 @@ function showCards (event) {
   </div>`
   }
 }
-
-
-// pushTime() {
-//   var currentTime = getTime();
-//   fastestTimes.push(currentTime);
-//   sortTimes();
-// }
-
-  //toggle
