@@ -6,10 +6,6 @@ class Card {
     this.matched = false;
 
   }
-  match() {
-
-  }
-    }
-
+}
     //if this instance matches -> moveToMatched()
     //this.matched = true;
